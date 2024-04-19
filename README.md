@@ -1,4 +1,4 @@
-# trac
+# OpenVPN
 
 Simple OpenVPN docker image.
 
