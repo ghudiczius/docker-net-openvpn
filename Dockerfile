@@ -1,10 +1,11 @@
-FROM alpine:3.19.1
+FROM alpine:3.19.4
 
-ARG VERSION
+ARG OPENVPN_VERSION
 
 ADD ["init.sh", "/init.sh"]
 
-RUN apk add openvpn==${VERSION}
+RUN apk add --no-cache --update \
+    openvpn==${OPENVPN_VERSION}
 
 WORKDIR /etc/openvpn
 
