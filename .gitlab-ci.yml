@@ -3,7 +3,7 @@ variables:
   DOCKER_HUB_IMAGE: "${DOCKER_HUB_USERNAME}/${CI_PROJECT_NAME}"
   # renovate: datasource=docker depName=alpine
   ALPINE_VERSION: "3.19.4"
-  # renovate: datasource=repology depName=alpine_3_21/ansible versioning=loose
+  # renovate: datasource=repology depName=alpine_3_21/openvpn versioning=loose
   OPENVPN_VERSION: "2.6.11-r0"
 stages:
 - test
