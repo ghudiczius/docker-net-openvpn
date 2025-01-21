@@ -1,0 +1,63 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "baseBranches": [
+    "master"
+  ],
+  "commitMessagePrefix": "renovate:",
+  "customManagers": [{
+    "customType": "regex",
+    "datasourceTemplate": "docker",
+    "depNameTemplate": "docker.io/library/alpine",
+    "fileMatch": [
+      "^.gitlab-ci\\.ya?ml$"
+    ],
+    "matchStrings": [
+      "#\\s*renovate:\\s*datasource=docker\\s*depName=alpine\\s*ALPINE_VERSION:\\s*\"(?<currentValue>.*)\""
+    ],
+    "versioningTemplate": "semver"
+  }, {
+    "autoReplaceStringTemplate": "# renovate: datasource=repology depName=alpine_{{{newMajor}}}_{{{newMinor}}}",
+    "customType": "regex",
+    "currentValueTemplate": "{{{ replace '_' '.' currentValue }}}",
+    "datasourceTemplate": "docker",
+    "depNameTemplate": "docker.io/library/alpine",
+    "fileMatch": [
+      "^.gitlab-ci\\.ya?ml$"
+    ],
+    "matchStrings": [
+      "#\\s*renovate:\\s*datasource=repology\\s*depName=alpine_(?<currentValue>\\d+[._]\\d+)"
+    ],
+    "versioningTemplate": "regex:^(?<major>\\d+)[._](?<minor>\\d+)$"
+  }, {
+    "customType": "regex",
+    "datasourceTemplate": "repology",
+    "fileMatch": [
+      "^.gitlab-ci\\.ya?ml$"
+    ],
+    "matchStrings": [
+      "#\\s*renovate:\\s*datasource=repology\\s*depName=(?<depName>alpine.*?)\\s*versioning=(?<versioning>.*?)\\s*.*?_VERSION:\\s*\"(?<currentValue>.*)\""
+    ]
+  }],
+  "packageRules": [{
+    "autoApprove": true,
+    "matchUpdateTypes": [
+      "major"
+    ]
+  }, {
+    "automerge": true,
+    "matchUpdateTypes": [
+      "minor"
+    ]
+  }, {
+    "automerge": true,
+    "automergeType": "branch",
+    "matchUpdateTypes": [
+      "patch"
+    ]
+  }, {
+    "groupName": "dependencies",
+    "matchBaseBranches": [
+      "master"
+    ]
+  }]
+}
