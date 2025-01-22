@@ -5,6 +5,7 @@ variables:
   ALPINE_VERSION: "3.21.2"
   # renovate: datasource=repology depName=alpine_3_21/openvpn versioning=loose
   OPENVPN_VERSION: "2.6.12-r1"
+
 stages:
 - test
 - build
