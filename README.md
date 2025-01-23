@@ -1,6 +1,6 @@
 # OpenVPN
 
-Simple OpenVPN docker image.
+Simple docker image for OpenVPN without any bloat, built on the official alpine image.
 
 ## Usage
 
